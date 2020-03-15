@@ -25,6 +25,7 @@ percent_stats = stats.iloc[:,1:].astype(float)
 div_stats = stats.iloc[:,:-1].astype(float)
 percent_stats /= div_stats.values
 percent_stats -= 1
+percent_stats *= 100
 percent_stats = percent_stats.round(2)
 
 country_stats = percent_stats.loc[country]
@@ -39,6 +40,7 @@ country_stats = country_stats.replace(0, np.nan).replace(np.inf, np.nan).dropna(
 country_stats = country_stats.T
 
 ax = country_stats.plot(kind='bar')
+ax.set_title("COVID19 Infections Growth in " + country, fontsize=18)
 for p in ax.patches:
-	ax.annotate(str(p.get_height()), (p.get_x(), p.get_height() * 1.01))
+	ax.annotate(str(p.get_height()) + "%", (p.get_x(), p.get_height() * 1.01))
 plt.show()
