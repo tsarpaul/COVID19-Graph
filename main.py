@@ -12,7 +12,7 @@ try:
 except:
 	country = 'Israel'
 
-r = requests.get('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv')
+r = requests.get('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv')
 textfile = io.StringIO(r.text)
 df = pd.read_csv(textfile, sep=',')
 # Merge provinces
